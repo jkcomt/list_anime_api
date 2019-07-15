@@ -15,105 +15,16 @@ class HomePage extends StatelessWidget {
   }
 
   Widget myAnimeList(){
-    return ListView(
-      children: <Widget>[
-        ListTile(
+    return ListView.builder(
+      itemCount: 20,
+      itemBuilder: (context, index){
+        int itemN = index+1;
+        return ListTile(
           leading: Icon(Icons.account_circle),
-          title: Text("1. Anime Item"),
+          title: Text(itemN.toString() +". Anime Item $index"),
           trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text("2. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text("3. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),          
-          title: Text("4. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text("5. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text("6. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text("7. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),          
-          title: Text("8. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text("9. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text("10. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text("11. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),          
-          title: Text("12. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text("13. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text("14. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text("15. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),          
-          title: Text("16. Anime Item"),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: (){},
-        )
-      ],
+        );
+      },
     );
   }
 
