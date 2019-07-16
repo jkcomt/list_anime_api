@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
-
+  const HomePage({
+    Key key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,26 +15,40 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  static List<String> topAnimes = [
+    "One Punch Man 2",
+    "Tate no Yuusha no Nariagari",
+    "One Piece",
+    "Boku no Hero Academia 2",
+    "Boku no Hero Academia",
+    "Boku no Hero Academia 3",
+    "One Punch Man",
+    "Attack on Titan",
+    "Hunter x Hunter (2011)",
+    "Fullmetal Alchemist: Brotherhood"
+  ];
+
   Widget myAnimeList() {
     return ListView.builder(
-      itemCount: 20,
+      itemCount: topAnimes.length,
       itemBuilder: (context, index) {
-        int itemN = index + 1;
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Icon(Icons.account_circle)),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.all(20),
-                child: Text("$itemN. Anime item"))),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Icon(Icons.arrow_right))
-          ],
+        return InkWell(
+          onTap: () {},
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Container(
+                  padding: EdgeInsets.all(20),
+                  child: Icon(Icons.account_circle)),
+              Expanded(
+                  child: Container(
+                      padding: EdgeInsets.all(20),
+                      child: Text(topAnimes[index]))),
+              Container(
+                  padding: EdgeInsets.all(20), child: Icon(Icons.arrow_right))
+            ],
+          ),
         );
       },
     );
