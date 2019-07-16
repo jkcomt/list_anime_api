@@ -14,18 +14,21 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget myAnimeList(){
+  Widget myAnimeList() {
     return ListView.builder(
       itemCount: 20,
-      itemBuilder: (context, index){
-        int itemN = index+1;
-        return ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text(itemN.toString() +". Anime Item $index"),
-          trailing: Icon(Icons.keyboard_arrow_right),
+      itemBuilder: (context, index) {
+        int itemN = index + 1;
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Expanded(
+              child: Center(child: Text("$itemN. Anime item"))),
+            Icon(Icons.arrow_right)  
+          ],
         );
       },
     );
   }
-
 }
