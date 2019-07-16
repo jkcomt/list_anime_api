@@ -23,9 +23,16 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
+            Container(
+              padding: EdgeInsets.all(20),
+              child: Icon(Icons.account_circle)),
             Expanded(
-              child: Center(child: Text("$itemN. Anime item"))),
-            Icon(Icons.arrow_right)  
+              child: Container(
+                padding: EdgeInsets.all(20),
+                child: Text("$itemN. Anime item"))),
+            Container(
+              padding: EdgeInsets.all(20),
+              child: Icon(Icons.arrow_right))
           ],
         );
       },
