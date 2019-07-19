@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:convert';
+
+import 'package:list_anime_api/model/anime.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({
-    Key key,
-  }) : super(key: key);
-  @override
+  
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -14,6 +16,8 @@ class HomePage extends StatelessWidget {
       body: myAnimeList(),
     );
   }
+
+  
 
   static List<String> topAnimes = [
     "One Punch Man 2",
@@ -46,7 +50,7 @@ class HomePage extends StatelessWidget {
                       padding: EdgeInsets.all(20),
                       child: Text(topAnimes[index]))),
               Container(
-                  padding: EdgeInsets.all(20), child: Icon(Icons.arrow_right))
+                  padding: EdgeInsets.all(20), child: Icon(Icons.keyboard_arrow_right))
             ],
           ),
         );
