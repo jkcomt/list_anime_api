@@ -1,29 +1,38 @@
  [{
-         "animeName": "One Punch Man 2"
+         "animeName": "One Punch Man 2",
+         "ageRange": 18
      },
      {
-         "animeName": "Tate no Yuusha no Nariagari"
+         "animeName": "Tate no Yuusha no Nariagari",
+         "ageRange": 18
      },
      {
-         "animeName": "One Piece"
+         "animeName": "One Piece",
+         "ageRange": 12
      },
      {
-         "animeName": "Boku no Hero Academia 2"
+         "animeName": "Boku no Hero Academia 2",
+         "ageRange": 12
      },
      {
-         "animeName": "Boku no Hero Academia 3"
+         "animeName": "Boku no Hero Academia 3",
+         "ageRange": 12
      },
      {
-         "animeName": "One Punch Man"
+         "animeName": "One Punch Man",
+         "ageRange": 12
      },
      {
-         "animeName": "Attack on Titan"
+         "animeName": "Attack on Titan",
+         "ageRange": 12
      },
      {
-         "animeName": "Hunter x Hunter (2011)"
+         "animeName": "Hunter x Hunter (2011)",
+         "ageRange": 12
      },
      {
-         "animeName": "Fullmetal Alchemist: Brotherhood"
+         "animeName": "Fullmetal Alchemist: Brotherhood",
+         "ageRange": 12
      }
 
  ]

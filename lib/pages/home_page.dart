@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:flutter/services.dart';
+import 'package:list_anime_api/model/anime.dart';
 
-class HomePage extends StatelessWidget {
-  
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    // loadAnimes();
+  }
+
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -11,45 +26,61 @@ class HomePage extends StatelessWidget {
       body: myAnimeList(),
     );
   }
+ 
+  Future<String> _loadAnimesAsset() async {
+    return await rootBundle.loadString('assets/data/topAnimesData.json');
+  }
 
-  
-
-  static List<String> topAnimes = [
-    "One Punch Man 2",
-    "Tate no Yuusha no Nariagari",
-    "One Piece",
-    "Boku no Hero Academia 2",
-    "Boku no Hero Academia",
-    "Boku no Hero Academia 3",
-    "One Punch Man",
-    "Attack on Titan",
-    "Hunter x Hunter (2011)",
-    "Fullmetal Alchemist: Brotherhood"
-  ];
+  Future<ListAnime> loadAnimes() async {
+    //agregamos un delay para probar el tiempo de espera
+    return Future.delayed(Duration(seconds:3),() async {
+      ListAnime anime;
+      String jsonString = await _loadAnimesAsset();
+      final List<dynamic> jsonResponse = json.decode(jsonString);
+      anime = new ListAnime.fromJson(jsonResponse);
+      return anime;
+    }
+    );
+  }
 
   Widget myAnimeList() {
-    return ListView.builder(
-      itemCount: topAnimes.length,
-      itemBuilder: (context, index) {
-        return InkWell(
-          onTap: () {},
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Container(
-                  padding: EdgeInsets.all(20),
-                  child: Icon(Icons.account_circle)),
-              Expanded(
-                  child: Container(
-                      padding: EdgeInsets.all(20),
-                      child: Text(topAnimes[index]))),
-              Container(
-                  padding: EdgeInsets.all(20), child: Icon(Icons.keyboard_arrow_right))
-            ],
-          ),
-        );
-      },
+    return FutureBuilder(
+      initialData: [],
+      builder: (context, snapshot) {
+          if(snapshot.connectionState == ConnectionState.done){
+            return ListView.builder(
+            itemCount:  snapshot.data.animes.length,
+            itemBuilder: (context, index) {
+              Anime anime = snapshot.data.animes[index];
+              return InkWell(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    Container(
+                        padding: EdgeInsets.all(20),
+                        child: Icon(Icons.account_circle)),
+                    Expanded(
+                        child: Container(
+                            padding: EdgeInsets.all(20),
+                            child: Text(anime.name))),
+                    Container(child: anime.ageRange >= 18 ? 
+                      Text("M",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold)) : 
+                      Text("PG",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold))
+                    ),
+                    Container(
+                        padding: EdgeInsets.all(20),
+                        child: Icon(Icons.keyboard_arrow_right))
+                  ],
+                ),
+              );
+            },
+          );
+          }else{
+            return Container(child:Center(child:Text("Loading...")));
+          }},
+       future: loadAnimes()
     );
   }
 }

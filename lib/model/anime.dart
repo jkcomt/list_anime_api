@@ -1,12 +1,14 @@
 class Anime{
 
   String name;
+  int ageRange;
 
-  Anime({this.name});
+  Anime({this.name,this.ageRange});
 
   factory Anime.fromJson(Map<String,dynamic> parsedJson){
     return Anime(
-      name : parsedJson['animeName'],
+      name     : parsedJson['animeName'],
+      ageRange : parsedJson['ageRange'],
     );
   }
 
